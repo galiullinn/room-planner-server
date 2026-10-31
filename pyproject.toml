@@ -1,0 +1,63 @@
+[project]
+name = "server"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "timur", email = "tim.galiullin24@gmail.com" }
+]
+requires-python = ">=3.13"
+dependencies = [
+    "alembic>=1.20.1",
+    "asyncpg>=0.32.0",
+    "fastapi>=0.162.0",
+    "pydantic-settings>=2.16.2",
+    "sqlalchemy>=2.1.6",
+    "uvicorn[standard]>=0.54.0",
+]
+
+[dependency-groups]
+dev = [
+    "mypy>=2.4.1",
+    "pytest>=9.2.0",
+    "ruff>=0.17.3",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = [
+    "E", 
+    "F", 
+    "I", 
+    "UP", 
+    "B", 
+    "C4", 
+    "ASYNC", 
+    "PTH", 
+    "RUF", 
+    "N", 
+    "W", 
+    "S", 
+    "BLE", 
+    "PT", 
+    "FAST",
+]
+
+ignore = [
+    "RUF001", 
+    "RUF002", 
+    "RUF003",
+]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.13"
+plugins = [
+    "pydantic.mypy",
+]
+strict = true
