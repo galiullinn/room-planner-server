@@ -23,6 +23,7 @@ class Category(IntPkMixin, Base):
     )
     children: Mapped[list["Category"]] = relationship(
         back_populates="parent",
+        passive_deletes="all",
     )
 
     def __repr__(self) -> str:

@@ -52,3 +52,9 @@ class CategoryRepository:
         """Удалить категорию."""
         await self._session.delete(category)
         await self._session.flush()
+
+    async def has_children(self, category_id: int) -> bool:
+        """Выполняет проверку наличия дочерних категорий."""
+        stmt = select(Category.id).where(Category.parent_id == category_id).limit(1)
+        result = await self._session.execute(stmt)
+        return result.first() is not None
