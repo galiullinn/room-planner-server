@@ -5,6 +5,10 @@ from .category import (
     CategorySelfReferenceError,
     CategorySlugAlreadyExistsError,
 )
+from .furniture_item import (
+    FurnitureItemAlreadyExistsError,
+    FurnitureItemNotFoundError,
+)
 
 __all__ = [
     "CategoryHasChildrenError",
@@ -12,4 +16,6 @@ __all__ = [
     "CategoryNotFoundError",
     "CategorySelfReferenceError",
     "CategorySlugAlreadyExistsError",
+    "FurnitureItemAlreadyExistsError",
+    "FurnitureItemNotFoundError",
 ]
