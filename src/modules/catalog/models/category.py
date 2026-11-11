@@ -1,6 +1,11 @@
+from typing import TYPE_CHECKING
+
 from sqlalchemy import ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from src.core.database import Base, IntPkMixin
+
+if TYPE_CHECKING:
+    from .furniture_item import FurnitureItem
 
 
 class Category(IntPkMixin, Base):
@@ -23,6 +28,10 @@ class Category(IntPkMixin, Base):
     )
     children: Mapped[list["Category"]] = relationship(
         back_populates="parent",
+        passive_deletes="all",
+    )
+    items: Mapped[list["FurnitureItem"]] = relationship(
+        back_populates="category",
         passive_deletes="all",
     )
 
