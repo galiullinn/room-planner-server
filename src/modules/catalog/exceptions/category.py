@@ -23,3 +23,9 @@ class CategoryHasChildrenError(ConflictError):
     """Нельзя удалить категорию, у которой есть дочерние категории."""
 
     default_message = "Нельзя удалить категорию, у которой есть дочерние категории."
+
+
+class CategoryHasItemsError(ConflictError):
+    """Нельзя удалить категорию, у которой есть предметы мебели."""
+
+    default_message = "Нельзя удалить категорию, у которой есть предметы мебели."

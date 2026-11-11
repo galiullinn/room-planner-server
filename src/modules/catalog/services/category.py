@@ -3,6 +3,7 @@ from collections.abc import Sequence
 from sqlalchemy.ext.asyncio import AsyncSession
 from src.modules.catalog.exceptions import (
     CategoryHasChildrenError,
+    CategoryHasItemsError,
     CategoryNotFoundError,
     CategorySelfReferenceError,
     CategorySlugAlreadyExistsError,
@@ -85,6 +86,8 @@ class CategoryService:
         category = await self.get_by_id(category_id)
         if await self._repository.has_children(category_id):
             raise CategoryHasChildrenError()
+        if await self._repository.has_items(category_id):
+            raise CategoryHasItemsError()
         await self._repository.delete(category)
         await self._session.commit()
 
