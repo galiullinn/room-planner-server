@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from src.core.config import get_settings
 from src.core.exceptions import register_exception_handlers
-from src.modules.catalog.routers import category_router
+from src.modules.catalog.routers import category_router, furniture_router
 
 settings = get_settings()
 
@@ -23,6 +23,7 @@ app.add_middleware(
 register_exception_handlers(app)
 
 app.include_router(category_router, prefix=settings.api_prefix)
+app.include_router(furniture_router, prefix=settings.api_prefix)
 
 
 @app.get("/")
