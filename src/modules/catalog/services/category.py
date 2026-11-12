@@ -44,7 +44,7 @@ class CategoryService:
         )
 
     async def create(self, data: CategoryCreateSchema) -> Category:
-        """Создать новую категори."""
+        """Создать новую категорию."""
         if await self._repository.get_by_slug(data.slug) is not None:
             raise CategorySlugAlreadyExistsError()
 
@@ -83,6 +83,7 @@ class CategoryService:
         return category
 
     async def delete(self, category_id: int) -> None:
+        """Удалить категорию."""
         category = await self.get_by_id(category_id)
         if await self._repository.has_children(category_id):
             raise CategoryHasChildrenError()

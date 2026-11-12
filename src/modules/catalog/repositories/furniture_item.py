@@ -8,7 +8,7 @@ from src.modules.catalog.models import FurnitureItem
 
 
 class FurnitureItemRepository:
-    """Репозитория для работы с предметами мебели."""
+    """Репозиторий для работы с предметами мебели."""
 
     def __init__(self, session: AsyncSession) -> None:
         self._session = session

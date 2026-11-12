@@ -6,7 +6,7 @@ from .errors import AppError
 
 
 def register_exception_handlers(app: FastAPI) -> None:
-    """Регистрирует обработчики исключений."""
+    """Зарегистрировать обработчики исключений."""
 
     @app.exception_handler(AppError)
     async def app_exception_handler(
@@ -24,10 +24,10 @@ def register_exception_handlers(app: FastAPI) -> None:
         request: Request,
         exc: RequestValidationError,
     ) -> JSONResponse:
-        """Обработать ошибки валидации входных данных."""
+        """Обработать ошибки валидации."""
         return JSONResponse(
             status_code=status.HTTP_422_UNPROCESSABLE_CONTENT,
-            content={"detail": "Невалидные данные"},
+            content={"detail": "Некорректные данные"},
         )
 
     @app.exception_handler(Exception)

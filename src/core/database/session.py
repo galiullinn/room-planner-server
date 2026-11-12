@@ -18,6 +18,6 @@ async_session_maker = async_sessionmaker(
 
 
 async def get_session() -> AsyncGenerator[AsyncSession]:
-    """Предоставляет асинхронную сессию для работы с базой данных."""
+    """Получить асинхронную сессию для работы с базой данных."""
     async with async_session_maker() as session:
         yield session

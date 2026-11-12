@@ -18,11 +18,11 @@ class CategoryCreateSchema(BaseModel):
 
 
 class CategoryUpdateSchema(BaseModel):
-    """Схема обновления данный категории."""
+    """Схема обновления данных категории."""
 
     name: str | None = Field(None, min_length=3, max_length=100, description="Наименование")
     slug: str | None = Field(None, min_length=3, max_length=100, description="slug")
-    sort_order: int | None = Field(None, description="Порядок сортироки")
+    sort_order: int | None = Field(None, description="Порядок сортировки")
     parent_id: int | None = Field(None, description="Ссылка на родительскую категорию")
 
     model_config = ConfigDict(

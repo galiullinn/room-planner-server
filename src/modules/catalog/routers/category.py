@@ -82,7 +82,7 @@ async def deactivate_category(
 @router.post(
     "/{category_id}/restore",
     response_model=CategoryResponseSchema,
-    summary="Восставноить категорию",
+    summary="Восстановить категорию",
 )
 async def restore_category(
     service: CategoryServiceDep,
