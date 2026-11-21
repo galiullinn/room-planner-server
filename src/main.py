@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.core.config import get_settings
+from src.core.exceptions import register_exception_handlers
 
 settings = get_settings()
 
@@ -17,6 +18,8 @@ app.add_middleware(
     allow_headers=["*"],
     allow_methods=["*"],
 )
+
+register_exception_handlers(app)
 
 
 @app.get("/")
